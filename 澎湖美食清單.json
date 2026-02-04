@@ -1,0 +1,301 @@
+{
+    "categories": [
+        {
+            "id": "seafood",
+            "name": "海鮮類",
+            "color": "#3b82f6"
+        },
+        {
+            "id": "breakfast",
+            "name": "早餐類",
+            "color": "#f59e0b"
+        },
+        {
+            "id": "drinks",
+            "name": "冰品飲料",
+            "color": "#14b8a6"
+        },
+        {
+            "id": "taiwanese",
+            "name": "台灣小吃",
+            "color": "#ef4444"
+        },
+        {
+            "id": "other",
+            "name": "其他料理",
+            "color": "#8b5cf6"
+        }
+    ],
+    "foodList": [
+        {
+            "id": "1",
+            "name": "清峰海鮮",
+            "address": "",
+            "hours": "",
+            "rating": 4.5,
+            "category": "seafood",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=清峰海鮮+澎湖"
+        },
+        {
+            "id": "2",
+            "name": "江巷仔內仙人掌冰",
+            "address": "",
+            "hours": "",
+            "rating": 4.7,
+            "category": "drinks",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=江巷仔內仙人掌冰+澎湖"
+        },
+        {
+            "id": "3",
+            "name": "旺旺手工海菜煎餅",
+            "address": "",
+            "hours": "",
+            "rating": 4.4,
+            "category": "taiwanese",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=旺旺手工海菜煎餅+澎湖"
+        },
+        {
+            "id": "4",
+            "name": "拾貳鮮 鮮魚湯專賣店",
+            "address": "",
+            "hours": "",
+            "rating": 4.5,
+            "category": "taiwanese",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=拾貳鮮+鮮魚湯專賣店+澎湖"
+        },
+        {
+            "id": "5",
+            "name": "汐品蛋餅",
+            "address": "",
+            "hours": "",
+            "rating": 4.8,
+            "category": "breakfast",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=汐品蛋餅+澎湖"
+        },
+        {
+            "id": "6",
+            "name": "蔬脆蛋餅",
+            "address": "",
+            "hours": "",
+            "rating": 4.5,
+            "category": "taiwanese",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=蔬脆蛋餅+澎湖"
+        },
+        {
+            "id": "7",
+            "name": "應時勢小吃部筒仔米糕",
+            "address": "",
+            "hours": "",
+            "rating": 4.3,
+            "category": "taiwanese",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=應時勢小吃部筒仔米糕+澎湖"
+        },
+        {
+            "id": "8",
+            "name": "倍果蔬食章魚燒",
+            "address": "",
+            "hours": "",
+            "rating": 4.8,
+            "category": "other",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=倍果蔬食章魚燒+澎湖"
+        },
+        {
+            "id": "9",
+            "name": "四海日式串燒",
+            "address": "",
+            "hours": "",
+            "rating": 4.6,
+            "category": "other",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=四海日式串燒+澎湖"
+        },
+        {
+            "id": "10",
+            "name": "關帝廟香腸",
+            "address": "",
+            "hours": "",
+            "rating": 4.5,
+            "category": "other",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=關帝廟香腸+澎湖"
+        },
+        {
+            "id": "11",
+            "name": "赤崁炸粿",
+            "address": "",
+            "hours": "",
+            "rating": 4.2,
+            "category": "taiwanese",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=赤崁炸粿+澎湖"
+        },
+        {
+            "id": "12",
+            "name": "來福海鮮餐廳",
+            "address": "",
+            "hours": "",
+            "rating": 4.1,
+            "category": "seafood",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=來福海鮮餐廳+澎湖"
+        },
+        {
+            "id": "13",
+            "name": "漁翁小吃部",
+            "address": "",
+            "hours": "",
+            "rating": 4.3,
+            "category": "seafood",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=漁翁小吃部+澎湖"
+        },
+        {
+            "id": "14",
+            "name": "澎湖老家餡餅",
+            "address": "",
+            "hours": "",
+            "rating": 4.6,
+            "category": "other",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=澎湖老家餡餅+澎湖"
+        },
+        {
+            "id": "15",
+            "name": "福牡蠣屋",
+            "address": "",
+            "hours": "",
+            "rating": 4.2,
+            "category": "seafood",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=福牡蠣屋+澎湖"
+        },
+        {
+            "id": "16",
+            "name": "紫玉仙草",
+            "address": "",
+            "hours": "",
+            "rating": 4.4,
+            "category": "drinks",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=紫玉仙草+澎湖"
+        },
+        {
+            "id": "17",
+            "name": "香亭土魠魚羹",
+            "address": "",
+            "hours": "",
+            "rating": 3.5,
+            "category": "taiwanese",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=香亭土魠魚羹+澎湖"
+        },
+        {
+            "id": "18",
+            "name": "益豐豆漿",
+            "address": "",
+            "hours": "",
+            "rating": 3.9,
+            "category": "breakfast",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=益豐豆漿+澎湖"
+        },
+        {
+            "id": "19",
+            "name": "北新橋牛雜湯",
+            "address": "",
+            "hours": "",
+            "rating": 4.3,
+            "category": "taiwanese",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=北新橋牛雜湯+澎湖"
+        },
+        {
+            "id": "20",
+            "name": "鐘記燒餅（北辰店）",
+            "address": "",
+            "hours": "",
+            "rating": 4.2,
+            "category": "breakfast",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=鐘記燒餅+北辰店+澎湖"
+        },
+        {
+            "id": "21",
+            "name": "鐘記燒餅",
+            "address": "",
+            "hours": "",
+            "rating": 4.2,
+            "category": "breakfast",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=鐘記燒餅+澎湖"
+        },
+        {
+            "id": "22",
+            "name": "二信早餐-飯糰專賣店",
+            "address": "",
+            "hours": "",
+            "rating": 4.3,
+            "category": "breakfast",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=二信早餐+飯糰專賣店+澎湖"
+        },
+        {
+            "id": "23",
+            "name": "二信飯糰創始店",
+            "address": "",
+            "hours": "",
+            "rating": 3.8,
+            "category": "breakfast",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=二信飯糰創始店+澎湖"
+        },
+        {
+            "id": "24",
+            "name": "劉正港檸檬汁",
+            "address": "",
+            "hours": "",
+            "rating": 3.9,
+            "category": "drinks",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=劉正港檸檬汁+澎湖"
+        },
+        {
+            "id": "25",
+            "name": "藍媽媽仙草光復總店",
+            "address": "",
+            "hours": "",
+            "rating": 4.6,
+            "category": "drinks",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=藍媽媽仙草光復總店+澎湖"
+        },
+        {
+            "id": "26",
+            "name": "文康滷菜",
+            "address": "",
+            "hours": "",
+            "rating": 4.4,
+            "category": "taiwanese",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=文康滷菜+澎湖"
+        },
+        {
+            "id": "27",
+            "name": "玉冠嫩仙草-澎湖總店",
+            "address": "",
+            "hours": "",
+            "rating": 4.4,
+            "category": "drinks",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=玉冠嫩仙草+澎湖總店+澎湖"
+        },
+        {
+            "id": "28",
+            "name": "阿豹香腸攤",
+            "address": "",
+            "hours": "",
+            "rating": 3.5,
+            "category": "taiwanese",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=阿豹香腸攤+澎湖"
+        },
+        {
+            "id": "29",
+            "name": "馬路益燒肉飯",
+            "address": "",
+            "hours": "",
+            "rating": 3.8,
+            "category": "taiwanese",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=馬路益燒肉飯+澎湖"
+        },
+        {
+            "id": "30",
+            "name": "西河食堂",
+            "address": "",
+            "hours": "",
+            "rating": 4.4,
+            "category": "taiwanese",
+            "mapUrl": "https://www.google.com/maps/search/?api=1&query=西河食堂+澎湖"
+        }
+    ]
+}

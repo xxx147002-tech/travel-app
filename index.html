@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="澎湖四天三夜旅遊行程規劃">
+    <meta name="theme-color" content="#0ea5e9">
+
+    <!-- iOS PWA Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="澎湖之旅">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/png" href="./icons/icon-192.png">
+
+    <title>澎湖之旅 2026</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./bottom-nav.css">
+</head>
+
+<body>
+    <!-- App Container -->
+    <div id="app">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">🏝️ 澎湖之旅</h1>
+                <p class="app-subtitle">2026 四天三夜行程</p>
+            </div>
+        </header>
+
+        <!-- Weather Section -->
+        <section class="weather-section">
+            <div class="weather-card">
+                <div class="weather-header">
+                    <h2>🌤️ 澎湖天氣預報</h2>
+                </div>
+                <div class="weather-forecast" id="weather-forecast">
+                    <!-- 5-day forecast will be inserted by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Itinerary Section -->
+        <section class="itinerary-section" id="itinerary-content">
+            <h2 class="section-title">📅 今日行程</h2>
+            <div class="timeline" id="timeline">
+                <!-- Timeline items will be inserted by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Food Recommendations Section -->
+        <section class="content-section" id="food-section" style="display: none;">
+            <h2 class="section-title">🍽️ 美食推薦</h2>
+
+            <!-- Category Filter Tabs -->
+            <div class="food-filter-tabs" id="food-filter-tabs">
+                <button class="filter-tab active" data-category="all">全部</button>
+                <!-- Other category tabs will be inserted by JavaScript -->
+            </div>
+
+            <div class="food-categories" id="food-content">
+                <!-- Food recommendations will be inserted by JavaScript -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Fixed Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="tab-btn active" data-tab="day1" data-date="2026-05-21">
+            <span class="tab-icon">1️⃣</span>
+            <span class="tab-label">Day1 5/21</span>
+        </button>
+        <button class="tab-btn" data-tab="day2" data-date="2026-05-22">
+            <span class="tab-icon">2️⃣</span>
+            <span class="tab-label">Day2 5/22</span>
+        </button>
+        <button class="tab-btn" data-tab="day3" data-date="2026-05-23">
+            <span class="tab-icon">3️⃣</span>
+            <span class="tab-label">Day3 5/23</span>
+        </button>
+        <button class="tab-btn" data-tab="day4" data-date="2026-05-24">
+            <span class="tab-icon">4️⃣</span>
+            <span class="tab-label">Day4 5/24</span>
+        </button>
+        <button class="tab-btn" data-tab="food">
+            <span class="tab-icon">🍽️</span>
+            <span class="tab-label">美食推薦</span>
+        </button>
+
+    </nav>
+
+    <!-- Install Prompt (iOS) -->
+    <div class="install-prompt" id="install-prompt">
+        <div class="install-content">
+            <p>💡 將此 App 加入主畫面，獲得更好體驗！</p>
+            <p class="install-instruction">點擊「分享」按鈕 <span style="font-size: 1.2em;">⎋</span>，然後選擇「加入主畫面」</p>
+            <button class="close-btn" id="close-install">知道了</button>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+
+</html>

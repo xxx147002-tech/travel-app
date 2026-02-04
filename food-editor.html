@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍽️ 美食清單編輯器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 968px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #4a5568;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(72, 187, 120, 0.4);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(245, 101, 101, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #2d3748;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .category-tag {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-tag .delete-btn {
+            background: rgba(0, 0, 0, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .food-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .food-item {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s;
+            cursor: move;
+        }
+
+        .food-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .food-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .food-item-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .food-item-rating {
+            color: #f59e0b;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .food-item-info {
+            color: #718096;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .food-item-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .food-item-actions .btn {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        .export-section {
+            margin-top: 20px;
+        }
+
+        .export-preview {
+            background: #1a202c;
+            color: #48bb78;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: 15px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #a0aec0;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .empty-state-text {
+            font-size: 1.2rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🍽️ 美食清單編輯器</h1>
+            <p>管理您的旅遊美食清單，支援分類與匯出功能</p>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+            <!-- Left: Food List -->
+            <div class="card">
+                <h2>📋 美食清單</h2>
+
+                <!-- Statistics -->
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-count">0</div>
+                        <div class="stat-label">總共餐廳</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="category-count">0</div>
+                        <div class="stat-label">分類數量</div>
+                    </div>
+                </div>
+
+                <!-- Food Items -->
+                <div class="food-list" id="food-list">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🍴</div>
+                        <div class="empty-state-text">尚無美食資料，請開始新增！</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Add Food & Categories -->
+            <div>
+                <!-- Add Food Form -->
+                <div class="card">
+                    <h2>➕ 新增美食</h2>
+                    <form id="food-form">
+                        <div class="form-group">
+                            <label for="food-name">餐廳名稱 *</label>
+                            <input type="text" id="food-name" placeholder="例：星光海洋牧場" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="food-address">地址</label>
+                            <input type="text" id="food-address" placeholder="例：澎湖縣湖西鄉北寮村">
+                        </div>
+                        <div class="form-group">
+                            <label for="food-hours">營業時間</label>
+                            <input type="text" id="food-hours" placeholder="例：10:00 - 18:00">
+                        </div>
+                        <div class="form-group">
+                            <label for="food-rating">Google 評分</label>
+                            <input type="number" id="food-rating" min="0" max="5" step="0.1" placeholder="例：4.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="food-category">分類</label>
+                            <select id="food-category" required>
+                                <option value="">請選擇分類</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="food-map">Google Maps 連結</label>
+                            <input type="url" id="food-map" placeholder="貼上 Google Maps 連結">
+                        </div>
+                        <div class="action-buttons">
+                            <button type="submit" class="btn btn-primary">
+                                <span>➕</span>
+                                <span id="form-submit-text">新增餐廳</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="cancel-edit" style="display: none;">
+                                <span>✖️</span>
+                                <span>取消編輯</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Category Management -->
+                <div class="card" style="margin-top: 20px;">
+                    <h2>🏷️ 分類管理</h2>
+                    <div class="category-list" id="category-list">
+                        <!-- Categories will be added here -->
+                    </div>
+                    <div class="form-group">
+                        <label for="new-category">新增分類</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="new-category" placeholder="例：澎湖市區">
+                            <input type="color" id="category-color" value="#667eea"
+                                style="width: 60px; height: 46px; border: none;">
+                        </div>
+                    </div>
+                    <button class="btn btn-success" id="add-category-btn">
+                        <span>➕</span>
+                        <span>新增分類</span>
+                    </button>
+                </div>
+
+                <!-- Batch Import Section -->
+                <div class="card" style="margin-top: 20px;">
+                    <h2>⚡ 批次匯入</h2>
+                    <p style="color: #718096; margin-bottom: 15px; font-size: 0.95rem;">
+                        快速匯入多個餐廳！每行一個餐廳，支援多種格式
+                    </p>
+
+                    <div class="form-group">
+                        <label for="batch-category">預設分類 *</label>
+                        <select id="batch-category">
+                            <option value="">請選擇分類</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="batch-input">貼上餐廳清單（每行一筆）</label>
+                        <textarea id="batch-input" placeholder="支援以下格式：
+
+方式1 - 僅名稱：
+星光海洋牧場
+日新餐廳
+吉貝別野餐廳
+
+方式2 - 名稱 | 評分：
+星光海洋牧場 | 4.5
+日新餐廳 | 4.3
+
+方式3 - 完整資訊（用 | 分隔）：
+星光海洋牧場 | 澎湖縣湖西鄉 | 10:00-18:00 | 4.5 | https://maps.app.goo.gl/xxx" style="min-height: 200px;"></textarea>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-success" id="batch-import-btn">
+                            <span>⚡</span>
+                            <span>批次匯入</span>
+                        </button>
+                        <button class="btn btn-secondary" id="clear-batch-btn">
+                            <span>🗑️</span>
+                            <span>清除</span>
+                        </button>
+                    </div>
+
+                    <div id="batch-result"
+                        style="margin-top: 15px; padding: 15px; background: #f7fafc; border-radius: 10px; display: none;">
+                        <div style="font-weight: 600; color: #2d3748; margin-bottom: 5px;">匯入結果：</div>
+                        <div id="batch-result-text" style="color: #718096;"></div>
+                    </div>
+                </div>
+
+                <!-- Export Section -->
+                <div class="card" style="margin-top: 20px;">
+                    <h2>💾 匯出資料</h2>
+                    <p style="color: #718096; margin-bottom: 15px; font-size: 0.95rem;">
+                        將資料匯出為 JSON 格式，可複製到 APP 中使用
+                    </p>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="export-json-btn">
+                            <span>📦</span>
+                            <span>匯出 JSON</span>
+                        </button>
+                        <button class="btn btn-secondary" id="copy-json-btn" style="display: none;">
+                            <span>📋</span>
+                            <span>複製到剪貼簿</span>
+                        </button>
+                    </div>
+                    <div class="export-preview" id="export-preview" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 資料結構
+        let foodList = [];
+        let categories = [];
+        let editingId = null;
+
+        // 初始化
+        function init() {
+            loadData();
+            updateDisplay();
+            setupEventListeners();
+
+            // 如果沒有分類，新增預設分類
+            if (categories.length === 0) {
+                categories = [
+                    { id: 'penghu-city', name: '澎湖市區', color: '#667eea' },
+                    { id: 'penghu-island', name: '澎湖環島', color: '#48bb78' }
+                ];
+                saveData();
+            }
+        }
+
+        // 設置事件監聽器
+        function setupEventListeners() {
+            document.getElementById('food-form').addEventListener('submit', handleFormSubmit);
+            document.getElementById('add-category-btn').addEventListener('click', addCategory);
+            document.getElementById('export-json-btn').addEventListener('click', exportJSON);
+            document.getElementById('copy-json-btn').addEventListener('click', copyToClipboard);
+            document.getElementById('cancel-edit').addEventListener('click', cancelEdit);
+            document.getElementById('batch-import-btn').addEventListener('click', batchImport);
+            document.getElementById('clear-batch-btn').addEventListener('click', clearBatch);
+        }
+
+        // 表單提交
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const foodData = {
+                id: editingId || Date.now().toString(),
+                name: document.getElementById('food-name').value,
+                address: document.getElementById('food-address').value,
+                hours: document.getElementById('food-hours').value,
+                rating: parseFloat(document.getElementById('food-rating').value) || 0,
+                category: document.getElementById('food-category').value,
+                mapUrl: document.getElementById('food-map').value
+            };
+
+            if (editingId) {
+                // 編輯現有項目
+                const index = foodList.findIndex(item => item.id === editingId);
+                foodList[index] = foodData;
+                editingId = null;
+            } else {
+                // 新增項目
+                foodList.push(foodData);
+            }
+
+            saveData();
+            updateDisplay();
+            resetForm();
+        }
+
+        // 新增分類
+        function addCategory() {
+            const name = document.getElementById('new-category').value.trim();
+            const color = document.getElementById('category-color').value;
+
+            if (!name) {
+                alert('請輸入分類名稱');
+                return;
+            }
+
+            const category = {
+                id: Date.now().toString(),
+                name: name,
+                color: color
+            };
+
+            categories.push(category);
+            saveData();
+            updateDisplay();
+
+            document.getElementById('new-category').value = '';
+        }
+
+        // 刪除分類
+        function deleteCategory(id) {
+            if (confirm('確定要刪除此分類嗎？使用此分類的餐廳將需要重新分類。')) {
+                categories = categories.filter(cat => cat.id !== id);
+                saveData();
+                updateDisplay();
+            }
+        }
+
+        // 編輯美食
+        function editFood(id) {
+            const food = foodList.find(item => item.id === id);
+            if (!food) return;
+
+            editingId = id;
+            document.getElementById('food-name').value = food.name;
+            document.getElementById('food-address').value = food.address;
+            document.getElementById('food-hours').value = food.hours;
+            document.getElementById('food-rating').value = food.rating;
+            document.getElementById('food-category').value = food.category;
+            document.getElementById('food-map').value = food.mapUrl;
+
+            document.getElementById('form-submit-text').textContent = '更新餐廳';
+            document.getElementById('cancel-edit').style.display = 'inline-flex';
+
+            // 滾動到表單
+            document.getElementById('food-form').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 刪除美食
+        function deleteFood(id) {
+            if (confirm('確定要刪除此餐廳嗎？')) {
+                foodList = foodList.filter(item => item.id !== id);
+                saveData();
+                updateDisplay();
+            }
+        }
+
+        // 取消編輯
+        function cancelEdit() {
+            editingId = null;
+            resetForm();
+        }
+
+        // 重置表單
+        function resetForm() {
+            document.getElementById('food-form').reset();
+            document.getElementById('form-submit-text').textContent = '新增餐廳';
+            document.getElementById('cancel-edit').style.display = 'none';
+        }
+
+        // 更新顯示
+        function updateDisplay() {
+            updateStats();
+            updateCategoryList();
+            updateCategorySelect();
+            updateFoodList();
+        }
+
+        // 更新統計
+        function updateStats() {
+            document.getElementById('total-count').textContent = foodList.length;
+            document.getElementById('category-count').textContent = categories.length;
+        }
+
+        // 更新分類清單
+        function updateCategoryList() {
+            const container = document.getElementById('category-list');
+
+            if (categories.length === 0) {
+                container.innerHTML = '<p style="color: #a0aec0;">尚無分類</p>';
+                return;
+            }
+
+            container.innerHTML = categories.map(cat => `
+                <div class="category-tag" style="background-color: ${cat.color}; color: white;">
+                    <span>${cat.name}</span>
+                    <button class="delete-btn" onclick="deleteCategory('${cat.id}')">×</button>
+                </div>
+            `).join('');
+        }
+
+        // 更新分類選擇器
+        function updateCategorySelect() {
+            const select = document.getElementById('food-category');
+            const batchSelect = document.getElementById('batch-category');
+            const currentValue = select.value;
+            const batchCurrentValue = batchSelect.value;
+
+            const optionsHTML = '<option value="">請選擇分類</option>' +
+                categories.map(cat => `<option value="${cat.id}">${cat.name}</option>`).join('');
+
+            select.innerHTML = optionsHTML;
+            batchSelect.innerHTML = optionsHTML;
+
+            if (currentValue) {
+                select.value = currentValue;
+            }
+
+            if (batchCurrentValue) {
+                batchSelect.value = batchCurrentValue;
+            }
+        }
+
+        // 更新美食清單
+        function updateFoodList() {
+            const container = document.getElementById('food-list');
+
+            if (foodList.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🍴</div>
+                        <div class="empty-state-text">尚無美食資料，請開始新增！</div>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = foodList.map(food => {
+                const category = categories.find(cat => cat.id === food.category);
+                const categoryName = category ? category.name : '未分類';
+                const categoryColor = category ? category.color : '#a0aec0';
+
+                return `
+                    <div class="food-item">
+                        <div class="food-item-header">
+                            <div>
+                                <div class="food-item-title">${food.name}</div>
+                                <div class="category-tag" style="background-color: ${categoryColor}; color: white; display: inline-flex;">
+                                    ${categoryName}
+                                </div>
+                            </div>
+                            ${food.rating > 0 ? `<div class="food-item-rating">⭐ ${food.rating}</div>` : ''}
+                        </div>
+                        ${food.address ? `<div class="food-item-info">📍 ${food.address}</div>` : ''}
+                        ${food.hours ? `<div class="food-item-info">🕐 ${food.hours}</div>` : ''}
+                        ${food.mapUrl ? `<div class="food-item-info"><a href="${food.mapUrl}" target="_blank" style="color: #667eea;">🗺️ 查看地圖</a></div>` : ''}
+                        <div class="food-item-actions">
+                            <button class="btn btn-secondary" onclick="editFood('${food.id}')">
+                                <span>✏️</span>
+                                <span>編輯</span>
+                            </button>
+                            <button class="btn btn-danger" onclick="deleteFood('${food.id}')">
+                                <span>🗑️</span>
+                                <span>刪除</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 匯出 JSON
+        function exportJSON() {
+            const exportData = {
+                categories: categories,
+                foodList: foodList
+            };
+
+            const json = JSON.stringify(exportData, null, 2);
+            const preview = document.getElementById('export-preview');
+
+            preview.textContent = json;
+            preview.style.display = 'block';
+            document.getElementById('copy-json-btn').style.display = 'inline-flex';
+        }
+
+        // 複製到剪貼簿
+        function copyToClipboard() {
+            const text = document.getElementById('export-preview').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ 已複製到剪貼簿！');
+            }).catch(err => {
+                alert('❌ 複製失敗，請手動複製');
+            });
+        }
+
+        // 儲存資料到 LocalStorage
+        function saveData() {
+            localStorage.setItem('foodList', JSON.stringify(foodList));
+            localStorage.setItem('categories', JSON.stringify(categories));
+        }
+
+        // 載入資料
+        function loadData() {
+            const savedFoodList = localStorage.getItem('foodList');
+            const savedCategories = localStorage.getItem('categories');
+
+            if (savedFoodList) {
+                foodList = JSON.parse(savedFoodList);
+            }
+
+            if (savedCategories) {
+                categories = JSON.parse(savedCategories);
+            }
+        }
+
+        // 批次匯入
+        function batchImport() {
+            const input = document.getElementById('batch-input').value.trim();
+            const category = document.getElementById('batch-category').value;
+
+            if (!input) {
+                alert('請貼上餐廳清單');
+                return;
+            }
+
+            if (!category) {
+                alert('請選擇預設分類');
+                return;
+            }
+
+            const lines = input.split('\n').filter(line => line.trim());
+            let successCount = 0;
+            let skipCount = 0;
+
+            lines.forEach(line => {
+                line = line.trim();
+                if (!line) return;
+
+                // 解析不同格式
+                const parts = line.split('|').map(p => p.trim());
+
+                let name, address, hours, rating, mapUrl;
+
+                if (parts.length === 1) {
+                    // 格式1: 僅名稱
+                    name = parts[0];
+                } else if (parts.length === 2) {
+                    // 格式2: 名稱 | 評分
+                    name = parts[0];
+                    rating = parseFloat(parts[1]) || 0;
+                } else if (parts.length >= 3) {
+                    // 格式3: 名稱 | 地址 | 營業時間 | 評分 | 地圖連結
+                    name = parts[0];
+                    address = parts[1] || '';
+                    hours = parts[2] || '';
+                    rating = parseFloat(parts[3]) || 0;
+                    mapUrl = parts[4] || '';
+                }
+
+                // 檢查是否已存在
+                const exists = foodList.some(food => food.name === name);
+                if (exists) {
+                    skipCount++;
+                    return;
+                }
+
+                // 新增餐廳
+                const foodData = {
+                    id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+                    name: name,
+                    address: address || '',
+                    hours: hours || '',
+                    rating: rating || 0,
+                    category: category,
+                    mapUrl: mapUrl || ''
+                };
+
+                foodList.push(foodData);
+                successCount++;
+
+                // 避免時間戳重複
+                if (successCount < lines.length) {
+                    const delay = Math.random() * 10;
+                }
+            });
+
+            saveData();
+            updateDisplay();
+
+            // 顯示結果
+            const resultDiv = document.getElementById('batch-result');
+            const resultText = document.getElementById('batch-result-text');
+            resultDiv.style.display = 'block';
+            resultText.innerHTML = `
+                ✅ 成功匯入 <strong>${successCount}</strong> 個餐廳<br>
+                ${skipCount > 0 ? `⚠️ 跳過 <strong>${skipCount}</strong> 個重複的餐廳` : ''}
+            `;
+
+            // 清空輸入框
+            document.getElementById('batch-input').value = '';
+
+            // 3秒後隱藏結果
+            setTimeout(() => {
+                resultDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        // 清除批次輸入
+        function clearBatch() {
+            document.getElementById('batch-input').value = '';
+            document.getElementById('batch-result').style.display = 'none';
+        }
+
+        // 初始化應用
+        init();
+    </script>
+</body>
+
+</html>

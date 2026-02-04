@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天氣API測試</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        #result {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+        }
+
+        .success {
+            color: #4CAF50;
+        }
+
+        .error {
+            color: #f44336;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🌤️ 天氣 API 測試工具</h1>
+        <p>這個頁面用來測試天氣 API 是否正常運作</p>
+
+        <button onclick="testWeatherAPI()">🔍 測試天氣 API</button>
+        <button onclick="clearResult()">🗑️ 清除結果</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function testWeatherAPI() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '⏳ 正在請求天氣數據...';
+
+            try {
+                const response = await fetch('/api/weather');
+                const data = await response.json();
+
+                if (data.success) {
+                    resultDiv.innerHTML = `
+<span class="success">✅ API 請求成功！</span>
+
+完整回應：
+${JSON.stringify(data, null, 2)}
+
+天氣預報解析：
+${data.data.map((item, index) => `
+Day ${index + 1}: ${item.date}
+  溫度: ${item.temp}°C
+  描述: ${item.desc}
+  降雨機率: ${item.rainChance}%
+  天氣代碼: ${item.weatherCode}
+`).join('\n')}
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+<span class="error">❌ API 回應錯誤</span>
+
+錯誤訊息：${data.error}
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+<span class="error">❌ 請求失敗</span>
+
+錯誤訊息：${error.message}
+錯誤堆疊：${error.stack}
+
+請確認：
+1. 伺服器是否正在運行 (python server.py)
+2. 檢查瀏覽器控制台 (F12) 是否有錯誤訊息
+                `;
+            }
+        }
+
+        function clearResult() {
+            document.getElementById('result').innerHTML = '';
+        }
+
+        // 頁面載入時自動測試
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('天氣API測試頁面已載入');
+            testWeatherAPI();
+        });
+    </script>
+</body>
+
+</html>

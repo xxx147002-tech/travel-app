@@ -1,0 +1,86 @@
+澎湖美食清单 - 32个地点
+格式：餐厅名称 | 评分 | 营业时间 | Google Maps 连结
+
+说明：
+- 营业时间栏位留空，请您自行填写
+- 点击连结可开启 Google Maps 查看营业时间
+- 编辑完成后告诉我，我会帮您转换成需要的格式
+
+==========================================
+
+清峰海鲜 | 4.5 |  | https://www.google.com/maps/search/?api=1&query=清峰海鲜+澎湖
+
+江巷仔内仙人掌冰 | 4.7 |  | https://www.google.com/maps/search/?api=1&query=江巷仔内仙人掌冰+澎湖
+
+旺旺手工海菜煎饼 | 4.4 |  | https://www.google.com/maps/search/?api=1&query=旺旺手工海菜煎饼+澎湖
+
+拾贰鲜 鲜鱼汤专卖店 | 4.5 |  | https://www.google.com/maps/search/?api=1&query=拾贰鲜+鲜鱼汤专卖店+澎湖
+
+汐品蛋饼 | 4.8 |  | https://www.google.com/maps/search/?api=1&query=汐品蛋饼+澎湖
+
+蔬脆蛋饼 | 4.5 |  | https://www.google.com/maps/search/?api=1&query=蔬脆蛋饼+澎湖
+
+应时势小吃部筒仔米糕 | 4.3 |  | https://www.google.com/maps/search/?api=1&query=应时势小吃部筒仔米糕+澎湖
+
+倍果蔬食章鱼烧 | 4.8 |  | https://www.google.com/maps/search/?api=1&query=倍果蔬食章鱼烧+澎湖
+
+四海日式串烧 | 4.6 |  | https://www.google.com/maps/search/?api=1&query=四海日式串烧+澎湖
+
+关帝庙香肠 | 4.5 |  | https://www.google.com/maps/search/?api=1&query=关帝庙香肠+澎湖
+
+赤崁炸粿 | 4.2 |  | https://www.google.com/maps/search/?api=1&query=赤崁炸粿+澎湖
+
+媽宮食品 中正店 | 4.0 |  | https://www.google.com/maps/search/?api=1&query=媽宮食品+中正店+澎湖
+
+来福海鲜餐厅 | 4.1 |  | https://www.google.com/maps/search/?api=1&query=来福海鲜餐厅+澎湖
+
+渔翁小吃部 | 4.3 |  | https://www.google.com/maps/search/?api=1&query=渔翁小吃部+澎湖
+
+澎湖老家馅饼 | 4.6 |  | https://www.google.com/maps/search/?api=1&query=澎湖老家馅饼+澎湖
+
+福牡蛎屋 | 4.2 |  | https://www.google.com/maps/search/?api=1&query=福牡蛎屋+澎湖
+
+紫玉仙草 | 4.4 |  | https://www.google.com/maps/search/?api=1&query=紫玉仙草+澎湖
+
+香亭土魠鱼羹 | 3.5 |  | https://www.google.com/maps/search/?api=1&query=香亭土魠鱼羹+澎湖
+
+益丰豆浆 | 3.9 |  | https://www.google.com/maps/search/?api=1&query=益丰豆浆+澎湖
+
+北新桥牛杂汤 | 4.3 |  | https://www.google.com/maps/search/?api=1&query=北新桥牛杂汤+澎湖
+
+钟记烧饼（北辰店）| 4.2 |  | https://www.google.com/maps/search/?api=1&query=钟记烧饼+北辰店+澎湖
+
+钟记烧饼 | 4.2 |  | https://www.google.com/maps/search/?api=1&query=钟记烧饼+澎湖
+
+二信早餐-饭团专卖店 | 4.3 |  | https://www.google.com/maps/search/?api=1&query=二信早餐+饭团专卖店+澎湖
+
+二信饭团创始店 | 3.8 |  | https://www.google.com/maps/search/?api=1&query=二信饭团创始店+澎湖
+
+刘正港柠檬汁 | 3.9 |  | https://www.google.com/maps/search/?api=1&query=刘正港柠檬汁+澎湖
+
+蓝妈妈仙草光复总店 | 4.6 |  | https://www.google.com/maps/search/?api=1&query=蓝妈妈仙草光复总店+澎湖
+
+文康卤菜 | 4.4 |  | https://www.google.com/maps/search/?api=1&query=文康卤菜+澎湖
+
+玉冠嫩仙草-澎湖总店 | 4.4 |  | https://www.google.com/maps/search/?api=1&query=玉冠嫩仙草+澎湖总店+澎湖
+
+阿豹香肠摊 | 3.5 |  | https://www.google.com/maps/search/?api=1&query=阿豹香肠摊+澎湖
+
+马路益烧肉饭 | 3.8 |  | https://www.google.com/maps/search/?api=1&query=马路益烧肉饭+澎湖
+
+西河食堂 | 4.4 |  | https://www.google.com/maps/search/?api=1&query=西河食堂+澎湖
+
+宸枫民宿 | 4.9 |  | https://www.google.com/maps/search/?api=1&query=宸枫民宿+澎湖
+
+==========================================
+
+填写说明：
+1. 点击 Google Maps 连结
+2. 查看营业时间并填入第三栏
+3. 营业时间格式建议：09:00-18:00 或 周一至周五 10:00-20:00
+4. 如果没有营业时间可填 "无资讯" 或留空
+
+编辑完成后，我可以帮您：
+- 转换成 JSON 格式导入 APP
+- 添加您自己的分类
+- 生成其他格式
