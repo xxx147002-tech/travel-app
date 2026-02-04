@@ -1,4 +1,5 @@
 # 🏝️ 澎湖之旅 2026 - 旅遊 App
+<!-- Last deployed: 2026-02-04 14:24 -->
 
 一個功能完整的 Progressive Web App (PWA)，用於管理澎湖四天三夜旅行行程。
 
