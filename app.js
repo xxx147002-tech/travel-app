@@ -116,11 +116,11 @@ const itineraryData = {
             },
             {
                 time: '14:00 – 17:30',
-                title: '林投公園',
+                title: '隘門沙灘、及林春咖啡館',
                 type: '🏖️',
                 category: 'attraction',
-                desc: '公園休閒與海邊活動',
-                location: '澎湖縣湖西鄉林投村',
+                desc: '沙灘活動與咖啡時光',
+                location: '澎湖縣湖西鄉隘門村',
                 mapUrl: 'https://www.google.com/maps/search/?api=1&query=林投公園+澎湖'
             },
             {
@@ -200,11 +200,11 @@ const itineraryData = {
             },
             {
                 time: '16:00 – 18:00',
-                title: '宸楓/念念/澄緣民宿 CHEN FENG HOMESTAY',
-                type: '🏨',
-                category: 'accommodation',
-                desc: '民宿休息、市區自由行',
-                location: '宸楓/念念/澄緣民宿',
+                title: '民宿休息、市區自由行',
+                type: '🚶',
+                category: 'leisure',
+                desc: '休息並探索市區',
+                location: '馬公市區',
                 mapUrl: 'https://www.google.com/maps/search/?api=1&query=宸楓念念澄緣民宿+澎湖',
                 foodLink: { label: '🍽️ 市區小吃推薦', category: 'local-snacks' }
             },
@@ -258,7 +258,7 @@ const itineraryData = {
             },
             {
                 time: '13:00 – 14:00',
-                title: '澎湖跨海大橋',
+                title: '跨海大橋',
                 type: '🌉',
                 category: 'attraction',
                 desc: '澎湖地標景點',
@@ -266,30 +266,22 @@ const itineraryData = {
                 mapUrl: 'https://www.google.com/maps/search/?api=1&query=澎湖跨海大橋'
             },
             {
-                time: '14:00 – 15:30',
-                title: '二崁陳家古厝',
+                time: '14:00 – 17:00',
+                title: '二崁陳家古厝、池東大菓葉玄武岩',
                 type: '🏛️',
                 category: 'attraction',
-                desc: '傳統閩南建築與文化古蹟',
-                location: '澎湖縣西嶼鄉二崁村',
-                mapUrl: 'https://www.google.com/maps/search/?api=1&query=二崁陳家古厝'
-            },
-            {
-                time: '15:30 – 17:00',
-                title: '池東大菓葉玄武岩',
-                type: '🗿',
-                category: 'attraction',
-                desc: '壯觀的柱狀玄武岩景觀',
-                location: '澎湖縣西嶼鄉池東村',
-                mapUrl: 'https://www.google.com/maps/search/?api=1&query=池東大菓葉玄武岩+澎湖'
+                desc: '文化古蹟與自然景觀',
+                location: '澎湖縣西嶼鄉',
+                mapUrl: 'https://www.google.com/maps/search/?api=1&query=二崁陳家古厝',
+                mapUrl2: 'https://www.google.com/maps/search/?api=1&query=池東大菓葉玄武岩+澎湖'
             },
             {
                 time: '17:00 – 18:00',
-                title: '宸楓/念念/澄緣民宿 CHEN FENG HOMESTAY',
-                type: '🏨',
-                category: 'accommodation',
-                desc: '返回民宿',
-                location: '宸楓/念念/澄緣民宿',
+                title: '回市區',
+                type: '🚗',
+                category: 'transport',
+                desc: '返回馬公市',
+                location: '馬公市',
                 mapUrl: 'https://www.google.com/maps/search/?api=1&query=宸楓念念澄緣民宿+澎湖'
             },
             {
@@ -653,6 +645,7 @@ function displayItinerary(date) {
         return;
     }
 
+
     timeline.innerHTML = data.activities.map((activity, index) => `
         <div class="timeline-item" style="animation-delay: ${index * 0.1}s">
             <div class="timeline-dot"></div>
@@ -663,12 +656,18 @@ function displayItinerary(date) {
                     ${activity.title}
                 </h3>
                 <p class="timeline-desc">${activity.desc}</p>
-                ${activity.mapUrl || activity.foodLink ? `
+                ${activity.mapUrl || activity.mapUrl2 || activity.foodLink ? `
                     <div class="timeline-actions">
                         ${activity.mapUrl ? `
                             <a href="${activity.mapUrl}" target="_blank" class="action-btn">
                                 <span>📍</span>
-                                <span>查看地圖</span>
+                                <span>查看地圖${activity.mapUrl2 ? ' (1)' : ''}</span>
+                            </a>
+                        ` : ''}
+                        ${activity.mapUrl2 ? `
+                            <a href="${activity.mapUrl2}" target="_blank" class="action-btn">
+                                <span>📍</span>
+                                <span>查看地圖 (2)</span>
                             </a>
                         ` : ''}
                         ${activity.foodLink ? `
@@ -681,6 +680,7 @@ function displayItinerary(date) {
             </div>
         </div>
     `).join('');
+
 }
 
 // 切換到美食推薦的特定分類
