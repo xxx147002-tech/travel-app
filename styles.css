@@ -1,15 +1,43 @@
 :root {
-    --primary-blue: #0ea5e9;
-    --primary-gradient: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
-    --secondary-gradient: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+    /* 澎湖海洋色系 - Penghu Ocean Palette */
+    --ocean-deep: #0891b2;
+    /* 深海藍 */
+    --ocean-medium: #06b6d4;
+    /* 海水藍 */
+    --ocean-light: #22d3ee;
+    /* 淺灘藍 */
+    --sky-blue: #38bdf8;
+    /* 天青藍 */
+    --mint-green: #5eead4;
+    /* 薄荷綠 */
+    --mint-light: #99f6e4;
+    /* 淺薄荷 */
+
+    /* 澎湖漸層設計 */
+    --primary-gradient: linear-gradient(135deg, #06b6d4 0%, #22d3ee 50%, #5eead4 100%);
+    --ocean-gradient: linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #22d3ee 100%);
+    --mint-gradient: linear-gradient(135deg, #22d3ee 0%, #5eead4 100%);
+    --secondary-gradient: linear-gradient(135deg, #f97316 0%, #fbbf24 100%);
     --sunset-gradient: linear-gradient(135deg, #ec4899 0%, #f97316 50%, #fbbf24 100%);
-    --bg-gradient: linear-gradient(to bottom, #f0f9ff 0%, #e0f2fe 100%);
-    --card-bg: rgba(255, 255, 255, 0.9);
-    --card-border: rgba(255, 255, 255, 0.5);
-    --shadow: 0 8px 32px rgba(14, 165, 233, 0.15);
-    --shadow-hover: 0 12px 40px rgba(14, 165, 233, 0.25);
+
+    /* 背景漸層 - 海天一色 */
+    --bg-gradient: linear-gradient(to bottom, #ecfeff 0%, #cffafe 50%, #a5f3fc 100%);
+
+    /* 玻璃擬態效果 (Glassmorphism) */
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --card-bg-hover: rgba(255, 255, 255, 0.85);
+    --card-border: rgba(255, 255, 255, 0.8);
+    --card-blur: blur(12px);
+
+    /* 柔和陰影 - 浮在海面效果 */
+    --shadow-soft: 0 8px 32px rgba(6, 182, 212, 0.12);
+    --shadow-medium: 0 12px 40px rgba(6, 182, 212, 0.18);
+    --shadow-strong: 0 16px 48px rgba(6, 182, 212, 0.25);
+    --shadow-glow: 0 0 24px rgba(94, 234, 212, 0.3);
+
+    /* 文字顏色 */
     --text-primary: #0f172a;
-    --text-secondary: #64748b;
+    --text-secondary: #475569;
     --text-light: #94a3b8;
 }
 
@@ -28,12 +56,43 @@ body {
     padding-bottom: 80px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 澎湖元素背景裝飾 */
+body::before {
+    content: '';
+    position: fixed;
+    bottom: -30px;
+    right: -30px;
+    width: 280px;
+    height: 280px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(94, 234, 212, 0.25)" stroke-width="3"/><circle cx="50" cy="50" r="30" fill="none" stroke="rgba(34, 211, 238, 0.2)" stroke-width="3"/><circle cx="50" cy="50" r="20" fill="none" stroke="rgba(6, 182, 212, 0.15)" stroke-width="2"/></svg>') center/contain no-repeat;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '🌵';
+    position: fixed;
+    top: 100px;
+    left: -10px;
+    font-size: 100px;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(-15deg);
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 #app {
     max-width: 800px;
     margin: 0 auto;
     padding: 0;
+    position: relative;
+    z-index: 1;
 }
 
 /* Header */
@@ -54,9 +113,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.15)" d="M0,160L48,170.7C96,181,192,203,288,192C384,181,480,139,576,133.3C672,128,768,160,864,165.3C960,171,1056,149,1152,133.3C1248,117,1344,107,1392,101.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path><path fill="rgba(255,255,255,0.1)" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,213.3C672,224,768,224,864,213.3C960,203,1056,181,1152,181.3C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
     background-size: cover;
-    opacity: 0.3;
+    opacity: 1;
 }
 
 .header-content {
@@ -141,17 +200,32 @@ body {
 
 .weather-card {
     background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--card-border);
-    border-radius: 24px;
+    backdrop-filter: var(--card-blur);
+    -webkit-backdrop-filter: var(--card-blur);
+    border: 2px solid var(--card-border);
+    border-radius: 28px;
     padding: 1.5rem;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft), var(--shadow-glow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.weather-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--mint-gradient);
+    opacity: 0.6;
 }
 
 .weather-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: var(--shadow-medium), var(--shadow-glow);
+    background: var(--card-bg-hover);
 }
 
 .weather-header {
@@ -167,12 +241,13 @@ body {
 }
 
 .weather-location {
-    background: var(--primary-gradient);
+    background: var(--ocean-gradient);
     color: white;
     padding: 0.35rem 0.85rem;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 500;
+    box-shadow: 0 2px 8px rgba(6, 182, 212, 0.2);
 }
 
 .weather-content {
@@ -189,7 +264,7 @@ body {
 .temperature {
     font-size: 2.75rem;
     font-weight: 700;
-    background: var(--primary-gradient);
+    background: var(--mint-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -409,9 +484,10 @@ body {
     left: 0.625rem;
     top: 0;
     bottom: 0;
-    width: 3px;
-    background: linear-gradient(to bottom, var(--primary-blue), #06b6d4);
-    border-radius: 2px;
+    width: 4px;
+    background: var(--ocean-gradient);
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
 }
 
 .timeline-item {
@@ -465,44 +541,86 @@ body {
     animation-delay: 0.8s;
 }
 
+/* 水滴樣式的時間軸圓點 */
 .timeline-dot {
     position: absolute;
     left: -1.625rem;
     top: 0.5rem;
-    width: 16px;
-    height: 16px;
-    background: white;
-    border: 3px solid var(--primary-blue);
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(135deg, #5eead4 0%, #22d3ee 100%);
+    border: 3px solid white;
     border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+    box-shadow:
+        0 0 0 4px rgba(94, 234, 212, 0.15),
+        0 2px 8px rgba(34, 211, 238, 0.3);
     z-index: 1;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 4px rgba(94, 234, 212, 0.15),
+            0 2px 8px rgba(34, 211, 238, 0.3);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 6px rgba(94, 234, 212, 0.25),
+            0 2px 12px rgba(34, 211, 238, 0.5);
+    }
 }
 
 .timeline-card {
     background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
+    backdrop-filter: var(--card-blur);
+    -webkit-backdrop-filter: var(--card-blur);
+    border: 2px solid var(--card-border);
+    border-radius: 20px;
     padding: 1.25rem;
-    box-shadow: var(--shadow);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    position: relative;
+}
+
+.timeline-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    background: var(--mint-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
 }
 
 .timeline-card:hover {
-    transform: translateX(4px);
-    box-shadow: var(--shadow-hover);
+    transform: translateX(6px) translateY(-2px);
+    box-shadow: var(--shadow-medium), var(--shadow-glow);
+    background: var(--card-bg-hover);
+}
+
+.timeline-card:hover::after {
+    opacity: 0.05;
 }
 
 .timeline-time {
     display: inline-block;
-    background: var(--primary-gradient);
+    background: var(--ocean-gradient);
     color: white;
     padding: 0.35rem 0.85rem;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
+    box-shadow: 0 2px 8px rgba(6, 182, 212, 0.2);
 }
 
 .timeline-title {
@@ -683,17 +801,19 @@ body {
 
 .food-card {
     background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
+    backdrop-filter: var(--card-blur);
+    -webkit-backdrop-filter: var(--card-blur);
+    border: 2px solid var(--card-border);
+    border-radius: 20px;
     padding: 1rem;
-    box-shadow: var(--shadow);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .food-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-medium), var(--shadow-glow);
+    background: var(--card-bg-hover);
 }
 
 .food-header {
@@ -751,6 +871,8 @@ body {
     box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }
 
+
+
 /* Responsive */
 @media (max-width: 640px) {
     .app-title {
@@ -769,5 +891,11 @@ body {
 
     .temperature {
         font-size: 2.5rem;
+    }
+
+    .tab-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 1.1rem;
     }
 }

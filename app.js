@@ -144,7 +144,7 @@ const itineraryData = {
             {
                 time: '22:00',
                 title: '回宸楓民宿休息',
-                type: '🏨',
+                type: '🏠',
                 category: 'accommodation',
                 desc: '入住民宿',
                 location: '宸楓民宿',
@@ -220,7 +220,7 @@ const itineraryData = {
             {
                 time: '21:00',
                 title: '回宸楓民宿休息',
-                type: '🏨',
+                type: '🏠',
                 category: 'accommodation',
                 desc: '返回民宿',
                 location: '宸楓民宿',
@@ -306,7 +306,7 @@ const itineraryData = {
             {
                 time: '22:00',
                 title: '回宸楓民宿休息',
-                type: '🏨',
+                type: '🏠',
                 category: 'accommodation',
                 desc: '返回民宿',
                 location: '宸楓民宿',
@@ -645,6 +645,17 @@ function displayItinerary(date) {
         return;
     }
 
+
+    // 計算第幾天 (從 2026-05-21 開始)
+    const startDate = new Date('2026-05-21');
+    const currentDateObj = new Date(date);
+    const dayDiff = Math.floor((currentDateObj - startDate) / (1000 * 60 * 60 * 24)) + 1;
+
+    // 更新標題
+    const headerText = document.getElementById('itinerary-header-text');
+    if (headerText) {
+        headerText.textContent = data.date;
+    }
 
     timeline.innerHTML = data.activities.map((activity, index) => `
         <div class="timeline-item" style="animation-delay: ${index * 0.1}s">

@@ -1,18 +1,29 @@
-/* Fixed Bottom Navigation */
+/* ========================================
+   水滴泡泡風格底部導覽列
+   Water Drop Bubble Style Navigation
+   ======================================== */
+
+/* 1. 玻璃擬態底部導覽列 (Glassmorphism) */
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background: white;
-    border-top: 2px solid rgba(14, 165, 233, 0.2);
+    /* 半透明白色背景 */
+    background: rgba(255, 255, 255, 0.75);
+    /* 背景模糊效果 - 讓水滴漂浮在水面上 */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(94, 234, 212, 0.3);
     display: flex;
-    padding: 0.5rem 0.25rem;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 0.5rem;
+    box-shadow:
+        0 -8px 32px rgba(6, 182, 212, 0.1),
+        0 -2px 8px rgba(94, 234, 212, 0.15);
     z-index: 999;
-    backdrop-filter: blur(10px);
 }
 
+/* 2. 導覽按鈕基礎樣式 */
 .tab-btn {
     flex: 1;
     background: transparent;
@@ -22,128 +33,225 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.25rem;
-    transition: all 0.3s ease;
-    border-radius: 12px;
+    gap: 0.35rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 16px;
+    position: relative;
 }
 
 .tab-btn:hover {
-    background: rgba(14, 165, 233, 0.1);
+    background: rgba(94, 234, 212, 0.08);
+    transform: translateY(-2px);
 }
 
-.tab-btn.active {
-    background: var(--primary-gradient);
-}
-
-.tab-btn.active .tab-icon {
-    transform: scale(1.2);
-}
-
-.tab-btn.active .tab-label {
-    color: white;
-    font-weight: 600;
-}
-
+/* 3. 水滴圖標樣式 */
 .tab-icon {
-    font-size: 1.5rem;
-    transition: transform 0.3s ease;
-}
-
-.tab-label {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-
-/* Content Sections */
-.content-section {
-    padding: 0 1rem 2rem;
-}
-
-/* Food Recommendations */
-.food-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-}
-
-.food-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 1.25rem;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-}
-
-.food-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-hover);
-}
-
-.food-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.food-desc {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-bottom: 0.75rem;
-}
-
-/* Trip Preparation */
-.preparation-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.preparation-category {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 1.25rem;
-    box-shadow: var(--shadow);
-}
-
-.preparation-category h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.preparation-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.preparation-item {
-    padding: 0.75rem;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    border-radius: 12px;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.preparation-item::before {
-    content: '✓';
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
-    height: 20px;
-    background: var(--primary-gradient);
-    color: white;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
+    font-size: 1.4rem;
+    font-weight: 700;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 2;
+}
+
+/* 4. 非選中狀態 - 淡化處理 (灰藍色輪廓) */
+.tab-btn:not(.active) .tab-icon {
+    background: transparent;
+    border: 2px solid rgba(148, 163, 184, 0.3);
+    color: rgba(71, 85, 105, 0.6);
+}
+
+.tab-btn:not(.active):hover .tab-icon {
+    border-color: rgba(94, 234, 212, 0.5);
+    color: rgba(6, 182, 212, 0.8);
+    transform: scale(1.05);
+}
+
+/* 5. 選中狀態 - 自然水滴效果 */
+.tab-btn.active .tab-icon {
+    /* 水滴漸層：清透的薄荷藍 + 頂部柔光 */
+    background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+        linear-gradient(135deg, #5eead4 0%, #22d3ee 50%, #0ea5e9 100%);
+    color: white;
+    border: none;
+    box-shadow:
+        0 6px 20px rgba(94, 234, 212, 0.35),
+        0 2px 8px rgba(34, 211, 238, 0.25),
+        inset 0 1px 3px rgba(255, 255, 255, 0.5),
+        inset 0 -2px 6px rgba(8, 145, 178, 0.2);
+    transform: scale(1.15);
+}
+
+/* 6. 柔和高光效果 - 模擬水的折射 */
+.tab-btn.active .tab-icon::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle at 40% 40%,
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.3) 40%,
+            transparent 70%);
+    border-radius: 50%;
+    filter: blur(3px);
+    z-index: 2;
+}
+
+/* 7. 水波紋理效果 - 增強水滴質感 */
+.tab-btn.active::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background:
+        radial-gradient(circle, transparent 60%, rgba(94, 234, 212, 0.15) 65%, transparent 70%),
+        radial-gradient(circle, transparent 70%, rgba(34, 211, 238, 0.1) 75%, transparent 80%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 8. 點擊漣漪效果 (Splash Effect) - 水滴落入水面 */
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle,
+            rgba(94, 234, 212, 0.2) 0%,
+            rgba(34, 211, 238, 0.12) 40%,
+            transparent 70%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: ripple 2.5s ease-in-out infinite;
+}
+
+/* 9. 小泡泡裝飾 - 增強水感 */
+.tab-btn.active .tab-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image:
+        /* 右上小泡泡 */
+        radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 30%, transparent 50%),
+        /* 右下小泡泡 */
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 35%, transparent 55%),
+        /* 左下小泡泡 */
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.15) 40%, transparent 60%);
+    background-size: 8px 8px, 6px 6px, 5px 5px;
+    background-position: 75% 25%, 80% 70%, 20% 80%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    z-index: 4;
+    pointer-events: none;
+    animation: bubbleFloat 3s ease-in-out infinite;
+}
+
+@keyframes bubbleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateY(-2px) scale(1.05);
+        opacity: 1;
+    }
+}
+
+@keyframes ripple {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0.3;
+    }
+}
+
+/* 8. 文字標籤樣式 - 圓潤字體 */
+.tab-label {
     font-size: 0.7rem;
-    font-weight: 600;
-    flex-shrink: 0;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    /* 使用系統圓潤字體 */
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Rounded', 'Rounded', 'Segoe UI', sans-serif;
+}
+
+/* 非選中狀態文字 */
+.tab-btn:not(.active) .tab-label {
+    color: rgba(71, 85, 105, 0.7);
+}
+
+/* 選中狀態文字 - 使用水滴最深的藍色 */
+.tab-btn.active .tab-label {
+    color: #0891b2;
+    font-weight: 700;
+}
+
+/* 美食推薦按鈕特殊處理 */
+.tab-btn[data-tab="food"] .tab-icon {
+    font-size: 1.6rem;
+}
+
+.tab-btn[data-tab="food"].active .tab-icon {
+    background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+        linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #f97316 100%);
+    box-shadow:
+        0 6px 20px rgba(251, 191, 36, 0.35),
+        0 2px 8px rgba(249, 115, 22, 0.25),
+        inset 0 1px 3px rgba(255, 255, 255, 0.5),
+        inset 0 -2px 6px rgba(249, 115, 22, 0.2);
+}
+
+/* 9. 響應式優化 */
+@media (max-width: 640px) {
+    .tab-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.2rem;
+    }
+
+    .tab-label {
+        font-size: 0.65rem;
+    }
+
+    .bottom-nav {
+        padding: 0.5rem 0.25rem;
+    }
+}
+
+/* 10. 觸控反饋優化 */
+.tab-btn:active {
+    transform: scale(0.95);
+}
+
+.tab-btn.active:active {
+    transform: scale(1.1);
 }
