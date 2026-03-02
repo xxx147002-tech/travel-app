@@ -1,4 +1,4 @@
-// ==================== 美食清單資料 ====================
+﻿// ==================== 美食清單資料 ====================
 // 從 food-editor.html 匯出後，將 JSON 資料貼到這裡
 // 資料格式範例：
 // const foodListData = {
@@ -25,7 +25,7 @@ const foodListData = {
         { id: 'local-snacks', name: '市區小吃', color: '#ef4444' },
         { id: 'local-meals', name: '市區正餐', color: '#f59e0b' },
         { id: 'breakfast', name: '早餐', color: '#fbbf24' },
-        { id: 'restaurants', name: '餐廳', color: '#3b82f6' },
+        { id: 'restaurants', name: '老街', color: '#3b82f6' },
         { id: 'island-tour', name: '環島', color: '#10b981' },
         { id: 'souvenirs', name: '伴手禮', color: '#8b5cf6' }
     ],
@@ -47,6 +47,9 @@ const foodListData = {
         { name: '拾貳鮮 鮮魚湯專賣店', rating: 4.5, reviews: 413, category: 'local-meals', mapUrl: 'https://www.google.com/maps/search/?api=1&query=拾貳鮮+鮮魚湯專賣店+澎湖' },
         { name: '應時勢小吃部筒仔米糕', rating: 4.3, reviews: 213, category: 'local-meals', mapUrl: 'https://www.google.com/maps/search/?api=1&query=應時勢小吃部筒仔米糕+澎湖' },
         { name: '福牡蠣屋', rating: 4.2, reviews: 2678, category: 'local-meals', mapUrl: 'https://www.google.com/maps/search/?api=1&query=福牡蠣屋+澎湖' },
+        { name: '西河食堂', rating: 4.4, reviews: 1923, category: 'local-meals', mapUrl: 'https://www.google.com/maps/search/?api=1&query=西河食堂+澎湖' },
+        { name: '原味漁村小吃', rating: 3.8, reviews: 3670, category: 'local-meals', mapUrl: 'https://www.google.com/maps/search/?api=1&query=原味漁村小吃+澎湖' },
+        { name: '馬路益燒肉飯', rating: 3.8, reviews: 7237, category: 'local-meals', mapUrl: 'https://www.google.com/maps/search/?api=1&query=馬路益燒肉飯+澎湖' },
 
         // 早餐
         { name: '汐品蛋餅', rating: 4.8, reviews: 108, category: 'breakfast', mapUrl: 'https://www.google.com/maps/search/?api=1&query=汐品蛋餅+澎湖' },
@@ -57,20 +60,27 @@ const foodListData = {
         { name: '鐘記燒餅', rating: 4.2, reviews: 2703, category: 'breakfast', mapUrl: 'https://www.google.com/maps/search/?api=1&query=鐘記燒餅+澎湖' },
         { name: '二信早餐-飯糰專賣店', rating: 4.3, reviews: 536, category: 'breakfast', mapUrl: 'https://www.google.com/maps/search/?api=1&query=二信早餐+飯糰專賣店+澎湖' },
         { name: '二信飯糰創始店', rating: 3.8, reviews: 1729, category: 'breakfast', mapUrl: 'https://www.google.com/maps/search/?api=1&query=二信飯糰創始店+澎湖' },
-        { name: '西河食堂', rating: 4.4, reviews: 1923, category: 'breakfast', mapUrl: 'https://www.google.com/maps/search/?api=1&query=西河食堂+澎湖' },
 
-        // 餐廳
-        { name: '清峰海鮮', rating: 4.5, reviews: 1429, category: 'restaurants', mapUrl: 'https://www.google.com/maps/search/?api=1&query=清峰海鮮+澎湖' },
-        { name: '來福海鮮餐廳', rating: 4.1, reviews: 3723, category: 'restaurants', mapUrl: 'https://www.google.com/maps/search/?api=1&query=來福海鮮餐廳+澎湖' },
-        { name: '漁翁小吃部', rating: 4.3, reviews: 342, category: 'restaurants', mapUrl: 'https://www.google.com/maps/search/?api=1&query=漁翁小吃部+澎湖' },
+        // 老街
+        { name: '大漢花枝丸', rating: 4.4, reviews: 528, category: 'restaurants', mapUrl: 'https://www.google.com/maps/search/?api=1&query=大漢花枝丸+澎湖' },
+        { name: '藍媽媽仙草中央店', rating: 4.4, reviews: 493, category: 'restaurants', mapUrl: 'https://www.google.com/maps/search/?api=1&query=藍媽媽仙草中央店+澎湖' },
+        { name: '乾益堂藥膳蛋', rating: 4.0, reviews: 651, category: 'restaurants', mapUrl: 'https://www.google.com/maps/search/?api=1&query=乾益堂藥膳蛋+澎湖' },
 
         // 環島
         { name: '江巷仔內仙人掌冰', rating: 4.7, reviews: 1220, category: 'island-tour', mapUrl: 'https://www.google.com/maps/search/?api=1&query=江巷仔內仙人掌冰+澎湖' },
-        { name: '旺旺手工海菜煎餅', rating: 4.4, reviews: 543, category: 'island-tour', mapUrl: 'https://www.google.com/maps/search/?api=1&query=旺旺手工海菜煎餅+澎湖' },
-        { name: '澎湖老家餡餅', rating: 4.6, reviews: 1222, category: 'island-tour', mapUrl: 'https://www.google.com/maps/search/?api=1&query=澎湖老家餡餅+澎湖' },
+        { name: '旺旺手工海菜煎', rating: 4.4, reviews: 507, category: 'island-tour', mapUrl: 'https://www.google.com/maps/search/?api=1&query=旺旺手工海菜煎餅+澎湖' },
+        { name: '二崁一號（陳家）', rating: 4.8, reviews: 386, category: 'island-tour', mapUrl: 'https://www.google.com/maps/search/?api=1&query=二崁一號+澎湖' },
+        { name: '二崁杏仁茶', rating: 4.5, reviews: 1808, category: 'island-tour', mapUrl: 'https://www.google.com/maps/search/?api=1&query=二崁杏仁茶+澎湖' },
+        { name: '澎湖老家餡餅', rating: 4.6, reviews: 1222, category: 'local-snacks', mapUrl: 'https://www.google.com/maps/search/?api=1&query=澎湖老家餡餅+澎湖' },
 
         // 伴手禮
-        { name: '媽宮食品 中正店', rating: 4.0, reviews: 668, category: 'souvenirs', mapUrl: 'https://www.google.com/maps/search/?api=1&query=媽宮食品+中正店+澎湖' }
+        { name: '媽宮食品 中正店', rating: 4.0, reviews: 668, category: 'souvenirs', mapUrl: 'https://www.google.com/maps/search/?api=1&query=媽宮食品+中正店+澎湖' },
+        { name: '黑妞原味小舖', rating: 4.3, reviews: 598, category: 'souvenirs', mapUrl: 'https://www.google.com/maps/search/?api=1&query=黑妞原味小舖+澎湖' },
+        { name: '春仁黑糖糕', rating: 4.4, reviews: 804, category: 'souvenirs', mapUrl: 'https://www.google.com/maps/search/?api=1&query=春仁黑糖糕+澎湖' },
+        { name: '御品家食品', rating: 4.6, reviews: 1633, category: 'souvenirs', mapUrl: 'https://www.google.com/maps/search/?api=1&query=御品家食品+澎湖' },
+        { name: '正一花生酥', rating: 4.1, reviews: 652, category: 'souvenirs', mapUrl: 'https://www.google.com/maps/search/?api=1&query=正一花生酥+澎湖' },
+        { name: '新孟成', rating: 4.5, reviews: 721, category: 'souvenirs', mapUrl: 'https://www.google.com/maps/search/?api=1&query=新孟成+澎湖' },
+        { name: '澎湖伯', rating: 4.2, reviews: 1126, category: 'souvenirs', mapUrl: 'https://www.google.com/maps/search/?api=1&query=澎湖伯+澎湖' }
     ]
 };
 
@@ -163,7 +173,7 @@ const itineraryData = {
         },
         activities: [
             {
-                time: '07:00 – 08:00',
+                time: '08:30 – 09:30',
                 title: '赤崁往吉貝',
                 type: '⛴️',
                 category: 'transport',
@@ -172,7 +182,7 @@ const itineraryData = {
                 mapUrl: 'https://www.google.com/maps/search/?api=1&query=赤崁碼頭+澎湖'
             },
             {
-                time: '08:00 – 12:00',
+                time: '09:30 – 12:00',
                 title: '吉貝環島、水上活動',
                 type: '🏄',
                 category: 'attraction',
@@ -209,7 +219,7 @@ const itineraryData = {
                 foodLink: { label: '🍽️ 市區小吃推薦', category: 'local-snacks' }
             },
             {
-                time: '18:00 – 21:00',
+                time: '17:30 – 21:00',
                 title: '喜來登吃到飽（晚餐）',
                 type: '🍽️',
                 category: 'meal',
@@ -239,7 +249,7 @@ const itineraryData = {
         },
         activities: [
             {
-                time: '08:00 – 11:00',
+                time: '09:00 – 11:00',
                 title: '澎湖水族館',
                 type: '🐠',
                 category: 'attraction',
@@ -266,7 +276,7 @@ const itineraryData = {
                 mapUrl: 'https://www.google.com/maps/search/?api=1&query=澎湖跨海大橋'
             },
             {
-                time: '14:00 – 17:00',
+                time: '14:00 – 16:30',
                 title: '二崁陳家古厝、池東大菓葉玄武岩',
                 type: '🏛️',
                 category: 'attraction',
@@ -276,7 +286,7 @@ const itineraryData = {
                 mapUrl2: 'https://www.google.com/maps/search/?api=1&query=池東大菓葉玄武岩+澎湖'
             },
             {
-                time: '17:00 – 18:00',
+                time: '16:30 – 17:30',
                 title: '回市區',
                 type: '🚗',
                 category: 'transport',
@@ -285,7 +295,7 @@ const itineraryData = {
                 mapUrl: 'https://www.google.com/maps/search/?api=1&query=宸楓念念澄緣民宿+澎湖'
             },
             {
-                time: '18:00 – 20:00',
+                time: '17:30 – 19:00',
                 title: '船尾燒烤（晚餐）',
                 type: '🍽️',
                 category: 'meal',
@@ -294,7 +304,7 @@ const itineraryData = {
                 mapUrl: 'https://www.google.com/maps/search/?api=1&query=船尾燒烤+澎湖'
             },
             {
-                time: '20:00 – 22:00',
+                time: '19:00 – 21:00',
                 title: '夜釣小管 或 逛街',
                 type: '🎣',
                 category: 'leisure',
@@ -304,7 +314,7 @@ const itineraryData = {
                 foodLink: { label: '🍽️ 市區小吃推薦', category: 'local-snacks' }
             },
             {
-                time: '22:00',
+                time: '21:00',
                 title: '回宸楓民宿休息',
                 type: '🏠',
                 category: 'accommodation',
@@ -349,16 +359,24 @@ const itineraryData = {
                 category: 'attraction',
                 desc: '中央老街巡禮',
                 location: '中央老街',
-                mapUrl: 'https://www.google.com/maps/search/?api=1&query=澎湖中央老街'
+                mapUrl: 'https://www.google.com/maps/search/?api=1&query=澎湖中央老街',
+                foodLinks: [
+                    { label: '🏪 老街推薦', category: 'restaurants' },
+                    { label: '🎁 伴手禮推薦', category: 'souvenirs' }
+                ]
             },
             {
                 time: '12:00 – 14:00',
-                title: '漁翁小吃部（午餐）',
-                type: '🍽️',
-                category: 'meal',
-                desc: '在地小吃',
-                location: '澎湖縣馬公市',
-                mapUrl: 'https://www.google.com/maps/search/?api=1&query=漁翁小吃部+澎湖'
+                title: '老街、市區（午餐自理）',
+                type: '🏪',
+                category: 'leisure',
+                desc: '逛老街並自行覓食',
+                location: '澎湖中央老街',
+                mapUrl: 'https://www.google.com/maps/search/?api=1&query=澎湖中央老街',
+                foodLinks: [
+                    { label: '🍽️ 市區正餐推薦', category: 'local-meals' },
+                    { label: '🍢 市區小吃推薦', category: 'local-snacks' }
+                ]
             },
             {
                 time: '14:00 – 16:00',
@@ -686,6 +704,11 @@ function displayItinerary(date) {
                                 <span>${activity.foodLink.label}</span>
                             </button>
                         ` : ''}
+                        ${activity.foodLinks ? activity.foodLinks.map(fl => `
+                            <button class="action-btn food-link-btn" onclick="switchToFoodCategory('${fl.category}')">
+                                <span>${fl.label}</span>
+                            </button>
+                        `).join('') : ''}
                     </div>
                 ` : ''}
             </div>
