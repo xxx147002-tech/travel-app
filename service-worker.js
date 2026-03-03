@@ -1,4 +1,4 @@
-const CACHE_NAME = 'penghu-travel-v2';
+const CACHE_NAME = 'penghu-travel-v3';
 const urlsToCache = [
     './',
     './index.html',
