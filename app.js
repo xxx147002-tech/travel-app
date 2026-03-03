@@ -188,7 +188,7 @@ const itineraryData = {
                 category: 'attraction',
                 desc: '環島遊覽及水上活動體驗',
                 location: '吉貝島',
-                mapUrl: 'https://www.google.com/maps/search/?api=1&query=吉貝島'
+                mapUrl: 'https://www.google.com/maps/search/?api=1&query=吉貝海上樂園'
             },
             {
                 time: '12:00 – 14:00',
@@ -273,7 +273,7 @@ const itineraryData = {
                 category: 'attraction',
                 desc: '澎湖地標景點',
                 location: '澎湖跨海大橋',
-                mapUrl: 'https://www.google.com/maps/search/?api=1&query=澎湖跨海大橋'
+                mapUrl: 'https://www.google.com/maps/search/?api=1&query=澎湖跨海大橋+澎湖'
             },
             {
                 time: '14:00 – 16:30',
@@ -295,7 +295,7 @@ const itineraryData = {
                 mapUrl: 'https://www.google.com/maps/search/?api=1&query=宸楓念念澄緣民宿+澎湖'
             },
             {
-                time: '17:30 – 19:00',
+                time: '17:30 – 20:30',
                 title: '船尾燒烤（晚餐）',
                 type: '🍽️',
                 category: 'meal',
@@ -304,14 +304,13 @@ const itineraryData = {
                 mapUrl: 'https://www.google.com/maps/search/?api=1&query=船尾燒烤+澎湖'
             },
             {
-                time: '19:00 – 21:00',
-                title: '夜釣小管 或 逛街',
+                time: '21:20 – 23:00',
+                title: '夜釣小管',
                 type: '🎣',
                 category: 'leisure',
                 desc: '夜間活動',
                 location: '馬公市',
-                mapUrl: 'https://www.google.com/maps/search/?api=1&query=澎湖夜釣小管',
-                foodLink: { label: '🍽️ 市區小吃推薦', category: 'local-snacks' }
+                mapUrl: 'https://www.google.com/maps/search/?api=1&query=南海遊客中心+澎湖'
             },
             {
                 time: '21:00',
@@ -335,7 +334,7 @@ const itineraryData = {
         },
         activities: [
             {
-                time: '08:00 – 09:00',
+                time: '09:00 – 10:00',
                 title: '觀音亭',
                 type: '⛩️',
                 category: 'attraction',
@@ -344,7 +343,7 @@ const itineraryData = {
                 mapUrl: 'https://www.google.com/maps/search/?api=1&query=觀音亭+澎湖'
             },
             {
-                time: '09:00 – 10:00',
+                time: '10:00 – 11:00',
                 title: '篤行十村',
                 type: '🏘️',
                 category: 'attraction',
@@ -353,7 +352,7 @@ const itineraryData = {
                 mapUrl: 'https://www.google.com/maps/search/?api=1&query=篤行十村'
             },
             {
-                time: '10:00 – 12:00',
+                time: '11:00 – 12:00',
                 title: '澎湖老街',
                 type: '🏪',
                 category: 'attraction',
