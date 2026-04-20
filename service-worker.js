@@ -1,4 +1,4 @@
-const CACHE_NAME = 'penghu-travel-v4';
+const CACHE_NAME = 'penghu-travel-v5';
 const urlsToCache = [
     './',
     './index.html',
@@ -9,18 +9,18 @@ const urlsToCache = [
     './icons/icon-512.png'
 ];
 
-// 安裝 Service Worker
+// 安裝 Service Worker，並立即接管（skipWaiting）
 self.addEventListener('install', event => {
     event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => {
-                console.log('快取已開啟');
-                return cache.addAll(urlsToCache);
-            })
+        caches.open(CACHE_NAME).then(cache => {
+            console.log('快取已開啟');
+            return cache.addAll(urlsToCache);
+        })
     );
+    self.skipWaiting();
 });
 
-// 啟用 Service Worker
+// 啟用時清除舊快取，並立即控制所有頁面
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys().then(cacheNames => {
@@ -32,21 +32,25 @@ self.addEventListener('activate', event => {
                     }
                 })
             );
-        })
+        }).then(() => self.clients.claim())
     );
 });
 
-// 攔截請求
+// 網路優先策略：有網路時抓最新版，失敗才用快取（離線備用）
 self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                // 如果快取中有，則返回快取
-                if (response) {
-                    return response;
-                }
-                // 否則發起網路請求
-                return fetch(event.request);
+        fetch(event.request)
+            .then(networkResponse => {
+                // 網路成功：更新快取並回傳最新內容
+                const responseClone = networkResponse.clone();
+                caches.open(CACHE_NAME).then(cache => {
+                    cache.put(event.request, responseClone);
+                });
+                return networkResponse;
+            })
+            .catch(() => {
+                // 網路失敗：從快取回傳（離線模式）
+                return caches.match(event.request);
             })
     );
 });
