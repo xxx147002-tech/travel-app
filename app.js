@@ -50,6 +50,7 @@ const foodListData = {
         { name: '西河食堂', rating: 4.4, reviews: 1923, category: 'local-meals', mapUrl: 'https://www.google.com/maps/search/?api=1&query=西河食堂+澎湖' },
         { name: '原味漁村小吃', rating: 3.8, reviews: 3670, category: 'local-meals', mapUrl: 'https://www.google.com/maps/search/?api=1&query=原味漁村小吃+澎湖' },
         { name: '馬路益燒肉飯', rating: 3.8, reviews: 7237, category: 'local-meals', mapUrl: 'https://www.google.com/maps/search/?api=1&query=馬路益燒肉飯+澎湖' },
+        { name: '海城 上湯鮮魚粥', rating: 4.6, reviews: 2065, category: 'local-meals', mapUrl: 'https://www.google.com/maps/search/?api=1&query=海城上湯鮮魚粥+澎湖' },
 
         // 早餐
         { name: '汐品蛋餅', rating: 4.8, reviews: 108, category: 'breakfast', mapUrl: 'https://www.google.com/maps/search/?api=1&query=汐品蛋餅+澎湖' },
@@ -60,6 +61,7 @@ const foodListData = {
         { name: '鐘記燒餅', rating: 4.2, reviews: 2703, category: 'breakfast', mapUrl: 'https://www.google.com/maps/search/?api=1&query=鐘記燒餅+澎湖' },
         { name: '二信早餐-飯糰專賣店', rating: 4.3, reviews: 536, category: 'breakfast', mapUrl: 'https://www.google.com/maps/search/?api=1&query=二信早餐+飯糰專賣店+澎湖' },
         { name: '二信飯糰創始店', rating: 3.8, reviews: 1729, category: 'breakfast', mapUrl: 'https://www.google.com/maps/search/?api=1&query=二信飯糰創始店+澎湖' },
+        { name: '鐘記燒餅（三多店）', rating: 3.9, reviews: 38, category: 'breakfast', mapUrl: 'https://www.google.com/maps/search/?api=1&query=鐘記燒餅三多店+澎湖' },
 
         // 老街
         { name: '大漢花枝丸', rating: 4.4, reviews: 528, category: 'restaurants', mapUrl: 'https://www.google.com/maps/search/?api=1&query=大漢花枝丸+澎湖' },
@@ -296,12 +298,12 @@ const itineraryData = {
             },
             {
                 time: '17:30 – 20:30',
-                title: '船尾燒烤（晚餐）',
+                title: '友先燒烤（晚餐）',
                 type: '🍽️',
                 category: 'meal',
                 desc: '享用燒烤美食',
                 location: '馬公市',
-                mapUrl: 'https://www.google.com/maps/search/?api=1&query=船尾燒烤+澎湖'
+                mapUrl: 'https://www.google.com/maps/search/?api=1&query=友先燒烤+澎湖'
             },
             {
                 time: '21:20 – 23:00',
@@ -335,12 +337,13 @@ const itineraryData = {
         activities: [
             {
                 time: '09:00 – 10:00',
-                title: '觀音亭',
+                title: '重光媽祖銅像、觀音亭',
                 type: '⛩️',
                 category: 'attraction',
                 desc: '海濱景點',
                 location: '澎湖縣馬公市',
-                mapUrl: 'https://www.google.com/maps/search/?api=1&query=觀音亭+澎湖'
+                mapUrl: 'https://www.google.com/maps/search/?api=1&query=重光媽祖銅像+澎湖',
+                mapUrl2: 'https://www.google.com/maps/search/?api=1&query=觀音亭+澎湖'
             },
             {
                 time: '10:00 – 11:00',
@@ -366,16 +369,12 @@ const itineraryData = {
             },
             {
                 time: '12:00 – 14:00',
-                title: '老街、市區（午餐自理）',
-                type: '🏪',
-                category: 'leisure',
-                desc: '逛老街並自行覓食',
-                location: '澎湖中央老街',
-                mapUrl: 'https://www.google.com/maps/search/?api=1&query=澎湖中央老街',
-                foodLinks: [
-                    { label: '🍽️ 市區正餐推薦', category: 'local-meals' },
-                    { label: '🍢 市區小吃推薦', category: 'local-snacks' }
-                ]
+                title: '老街、市區（午餐:海城 上湯鮮魚粥）',
+                type: '🍽️',
+                category: 'meal',
+                desc: '品嚐海城上湯鮮魚粥',
+                location: '海城 上湯鮮魚粥',
+                mapUrl: 'https://www.google.com/maps/search/?api=1&query=海城上湯鮮魚粥+澎湖'
             },
             {
                 time: '14:00 – 16:00',
